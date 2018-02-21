@@ -47,7 +47,8 @@ namespace MultivariateStatistics
                 dataList = new List<double>();
                 foreach(double[] dataRow in myVal)
                 {
-                    dataList.Add(dataRow[n]);
+                    if (dataRow!=null)//if rows were ommitted in row prepare, then there will be null arrays in myVal
+                        dataList.Add(dataRow[n]);
                 }
                 result = Mathtool.GetDescriptiveStat(dataList);
                 FrmMain.Instance.descriptiveStatResults(result, colNames[n], clearData); //colNames populated by GetVList
